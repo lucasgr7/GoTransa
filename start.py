@@ -6,8 +6,9 @@ from chatterbot.storage import storage_adapter
 import logging
 bot = ChatBot(
     "Go Transa",
-    storage_adapter='chatterbot.storage.JsonFileStorageAdapter',
-    database='./database.json',
+    storage_adapter='chatterbot.storage.MongoDatabaseAdapter',
+    database='gotransa',
+    database_uri='mongodb://192.241.245.34:27017/',
     logic_adapters=[
         "chatterbot.logic.MathematicalEvaluation",
         "chatterbot.logic.TimeLogicAdapter",
@@ -17,27 +18,6 @@ bot = ChatBot(
     output_adapter="chatterbot.output.TerminalAdapter",
     database_name="C:/Users/Lucas/estudos/chatter bot/database.sqlite3"
 )
-
-conversation = [
-    "Ola",
-    "Oi!",
-    "Como voce esta?",
-    "Eu estou bem.",
-    "isso e bom ouvir",
-    "Obrigado.",
-    "voce e bem vindo.",
-    "Bom dia",
-    "E ai?",
-    "Bom dia",
-    "Buenos dias!",
-    "Bom dia",
-    "E ai fera?",
-    "Bom dia",
-    "E ai fera"
-]
-
-bot.set_trainer(ListTrainer)
-bot.train(conversation)
 
 print("Type something to begin...")
 
