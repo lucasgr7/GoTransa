@@ -1,10 +1,14 @@
-1499997429431	geckodriver	INFO	geckodriver 0.18.0
-1499997429439	geckodriver	INFO	Listening on 127.0.0.1:60306
-1499997431509	geckodriver::marionette	INFO	Starting browser C:\Program Files (x86)\Mozilla Firefox\firefox.exe with args ["-marionette"]
-1499997433368	Marionette	INFO	Listening on port 60313
-1499997433528	Marionette	WARN	TLS certificate errors will be ignored for this session
-1499995335239	Marionette	INFO	Ceased listening
-nagerParent.jsm, line 104: TypeError: this._recipeManager is null
-JavaScript error: resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/highlighters/auto-refresh.js, line 202: TypeError: can't convert null to object
-JavaScript error: resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/highlighters/auto-refresh.js, line 202: TypeError: can't convert null to object
+1500005047093	geckodriver	INFO	geckodriver 0.18.0
+1500005047103	geckodriver	INFO	Listening on 127.0.0.1:52199
+1500005049168	geckodriver::marionette	INFO	Starting browser C:\Program Files (x86)\Mozilla Firefox\firefox.exe with args ["-marionette"]
+1500005051055	Marionette	INFO	Listening on port 52206
+1500005051185	Marionette	WARN	TLS certificate errors will be ignored for this session
+1500004878839	Marionette	INFO	Ceased listening
+1500004879616	geckodriver::marionette	ERROR	Failed to kill browser process
+hen attempting to fetch resource.
+Full stack: 
+*************************
+1500004164424	Marionette	INFO	Ceased listening
+1500004164820	geckodriver::marionette	ERROR	Failed to kill browser process
+ource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/highlighters/auto-refresh.js, line 202: TypeError: can't convert null to object
 1499994780908	Marionette	INFO	Ceased listening
