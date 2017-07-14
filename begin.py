@@ -12,7 +12,7 @@ sys.setdefaultencoding('utf8')
 #reload(sys)
 #sys.setdefaultencoding('utf-8')
 
-browser = webdriver.Firefox(executable_path=r'C:\Automacao-Parabenizador-Facebook\geckodriver.exe')
+browser = webdriver.Firefox(executable_path=r'C:\GoTransa\geckodriver.exe')
 browser.get('http://facebook.com')
 
 # Nome de pessoas para adicionar
@@ -25,7 +25,7 @@ browser.get('http://facebook.com')
 
 def start():
     logar("eoy03770@oalsp.com", "gotransa123")
-    chamarPessoa('Moises Medon')
+    chamarPessoa('Moises Mendon')
 
 def logar(usuario, senha):
     txtEmail = browser.find_element_by_id('email')
@@ -58,38 +58,34 @@ def chamarPessoa(nome):
     # txtChat[0].send_keys(Keys.ENTER)
     # time.sleep(delay)
 
-    
     #actions = ActionChains(browser)
     goChatBot = GoChatBot()
+    resp = None
 
-    resposta = None
     # Conversando com as pessoas
     while(True):
         
         try:
             msgs = browser.find_elements_by_class_name('_4tdt')
-            ultimaMsg = msgs[len(msgs) - 1]
+            finalMsg = msgs[len(msgs) - 1]
                 
-            if(resposta == None or ultimaMsg.text != resposta.text):
+            if(resp == None or finalMsg.text != resp.text):
+                                
+                resp = goChatBot.GetAnswer(finalMsg.text)
+                print(resp)
                 
                 actions = ActionChains(browser)
-                
-                resposta = goChatBot.GetAnswer(unicode(ultimaMsg.text))
-                print(resposta)
-
-                resp = resposta.text.encode('utf-8-sig')
-                
-                actions.send_keys(resp)
+                actions.send_keys(resp.text.decode('utf-8'))
                 time.sleep(delay)
                 actions.send_keys(Keys.ENTER)
 
                 actions.perform()
                 actions.reset_actions()
 
-            #conversas class _4tdt
         except Exception:
             print(Exception)
 
+    browser.close()
+
 start()
 
-# browser.close()
