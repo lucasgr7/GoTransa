@@ -96,23 +96,34 @@ conversation = ["Oi",
 "Agora é você?",
 "Te enviei",
 "Nossa você e muito bonita",
-"Obrigado rs"
+"Obrigado rs",
+"e ai o que ta fazendo de bom por ai?",
+"Eu tô vendo serie e vc?",
+"eu to ouvindo musica",
+"ah legal, qual serie você esta vendo?",
+"eu comecei a ver uma nova que chama breaking bad",
+"ah eu já assisti, é muito boa, já esta acabando, to na quarta temporada",
+"ah que legal e depois que terminar vai ver qual?",
+"eu não sei ainda, qual você me recomenda?",
+"eu to assistindo demolidor é muito bom, você vai gostar. tem bastante acao e luta. Você gosta de qual tipo de serie?",
+"eu gosto mais de ação",
+"ah legal, eu também, você gosta de anime ?",
+"nossa adoro! o meu favorito é elfen lied, você já assistiu?",
+"ainda não, mas pretendo",
+"ah então assiste logo, gosto muito da Lucy ela é bem malvadona hehehe ",
+"E ai?",
+"E ai tudo bem?",
+"Tudo ótimo e você?  :)",
+"Ja assistiu aquela Série thirteen Reasons why?",
+"Ja vi, cara série muito boa de se ver",
+"Ja assistiu breaking bad?",
+"Nossa que série ótima",
+"Ja assistiu o novo Homem aranha?",
+"Ja vi homem aranha, muito bom",
+"Tava assistindo Titanic, não entendo como não couberam duas pessoas na porta",
+"Gosto de filmes de animação, toy stori lindo",
 ]
 
 bot.set_trainer(ListTrainer)
 bot.train(conversation)
 
-'''
-print("Type something to begin...")
-
-
-while True:
-    try:
-        # We pass None to this method because the parameter
-        # is not used by the TerminalAdapter
-        bot_input = bot.get_response(None)
-
-    # Press ctrl-c or ctrl-d on the keyboard to exit
-    except (KeyboardInterrupt, EOFError, SystemExit):
-        break
-    '''

@@ -3,7 +3,6 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 import time
-import re
 from gochatbot import GoChatBot
 
 reload(sys)
@@ -12,8 +11,10 @@ sys.setdefaultencoding('utf8')
 #reload(sys)
 #sys.setdefaultencoding('utf-8')
 
-browser = webdriver.Firefox(executable_path=r'C:\GoTransa\geckodriver.exe')
+browser = webdriver.Firefox(executable_path=r'F:\Github\GoTransa\geckodriver.exe')
 browser.get('http://facebook.com')
+resp = None
+goChatBot = GoChatBot()
 
 # Nome de pessoas para adicionar
 
@@ -49,6 +50,25 @@ def chamarPessoa(nome):
     pessoa[1].send_keys(Keys.ENTER)
     time.sleep(delay)
 
+def sendMessage(resp, decode):
+    delay = 3
+    msgs = browser.find_elements_by_class_name('_4tdt')
+    finalMsg = msgs[len(msgs) - 1]
+        
+    if(resp == None or finalMsg.text != resp.text):
+                        
+        resp = goChatBot.GetAnswer(finalMsg.text)
+        print(resp)
+        
+        actions = ActionChains(browser)
+        actions.send_keys(resp.text.decode(decode))
+        time.sleep(delay)
+        actions.send_keys(Keys.ENTER)
+
+        actions.perform()
+        actions.reset_actions()
+
+
     # Primeira Vez
     # txtChat = browser.find_elements_by_class_name('_1mf')
     # time.sleep(delay)
@@ -59,13 +79,23 @@ def chamarPessoa(nome):
     # time.sleep(delay)
 
     #actions = ActionChains(browser)
-    goChatBot = GoChatBot()
-    resp = None
 
     # Conversando com as pessoas
     while(True):
-        
         try:
+            sendMessage(resp, 'utf-8')
+        except Exception as e:
+            print(e)
+        try:
+            sendMessage(resp, 'utf-8-sig')
+        except Exception as e:
+            print(e)
+        try:
+            sendMessage(resp, 'Latin-1')
+        except Exception as e:
+            print(e)
+        try:
+            delay = 3
             msgs = browser.find_elements_by_class_name('_4tdt')
             finalMsg = msgs[len(msgs) - 1]
                 
@@ -75,15 +105,14 @@ def chamarPessoa(nome):
                 print(resp)
                 
                 actions = ActionChains(browser)
-                actions.send_keys(resp.text.decode('utf-8'))
+                actions.send_keys("Não é isso...")
                 time.sleep(delay)
                 actions.send_keys(Keys.ENTER)
 
                 actions.perform()
                 actions.reset_actions()
-
-        except Exception:
-            print(Exception)
+        except Exception as e:
+            print(e)
 
     browser.close()
 
