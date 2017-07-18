@@ -1,15 +1,24 @@
-1500006972904	geckodriver	INFO	geckodriver 0.18.0
-1500006972912	geckodriver	INFO	Listening on 127.0.0.1:54225
-1500006974978	geckodriver::marionette	INFO	Starting browser C:\Program Files (x86)\Mozilla Firefox\firefox.exe with args ["-marionette"]
-1500006976971	Marionette	INFO	Listening on port 54232
-1500006977071	Marionette	WARN	TLS certificate errors will be ignored for this session
-*************************
-A coding exception was thrown and uncaught in a Task.
-
-Full message: TypeError: NetworkError when attempting to fetch resource.
-Full stack: 
-*************************
-1500007651226	Marionette	INFO	Ceased listening
-1500004164820	geckodriver::marionette	ERROR	Failed to kill browser process
-ource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/highlighters/auto-refresh.js, line 202: TypeError: can't convert null to object
-1499994780908	Marionette	INFO	Ceased listening
+1500350071525	geckodriver	INFO	geckodriver 0.18.0
+1500350071532	geckodriver	INFO	Listening on 127.0.0.1:51251
+1500350071641	geckodriver::marionette	INFO	Starting browser C:\Program Files (x86)\Mozilla Firefox\firefox.exe with args ["-marionette"]
+1500350073834	Marionette	INFO	Listening on port 51255
+1500350074271	Marionette	WARN	TLS certificate errors will be ignored for this session
+1500347501477	Marionette	INFO	Ceased listening
+nagerParent.jsm, line 104: TypeError: this._recipeManager is null
+1500344564513	Marionette	INFO	Ceased listening
+/main.js:1491:5
+NEA_addSecurityInfo@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/webconsole.js:2266:5
+NetworkResponseListener.prototype._getSecurityInfo<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/webconsole/network-monitor.js:495:5
+exports.makeInfallible/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/ThreadSafeDevToolsUtils.js:101:14
+onStartRequest@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/webconsole/network-monitor.js:436:5
+Line: 1491, column: 5
+console.error: 
+  Handler function threw an exception: TypeError: this.transport is null
+Stack: send@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/main.js:1491:5
+NEA_addSecurityInfo@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/actors/webconsole.js:2266:5
+NetworkResponseListener.prototype._getSecurityInfo<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/webconsole/network-monitor.js:495:5
+exports.makeInfallible/<@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/ThreadSafeDevToolsUtils.js:101:14
+onStartRequest@resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/shared/webconsole/network-monitor.js:436:5
+Line: 1491, column: 5
+JavaScript error: resource://gre/modules/commonjs/toolkit/loader.js -> resource://devtools/server/main.js, line 1491: TypeError: this.transport is null
+1500344490489	Marionette	INFO	Ceased listening

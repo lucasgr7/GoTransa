@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import sys
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -6,14 +7,15 @@ import time
 from gochatbot import GoChatBot
 
 reload(sys)
-sys.setdefaultencoding('utf8')
+sys.setdefaultencoding('utf-8')
 
 #reload(sys)
 #sys.setdefaultencoding('utf-8')
 
-browser = webdriver.Firefox(executable_path=r'F:\Github\GoTransa\geckodriver.exe')
+browser = webdriver.Firefox(executable_path=r'C:\Users\Lucas\estudos\chatter bot\geckodriver.exe')
 browser.get('http://facebook.com')
-resp = None
+global resp
+resp = ''
 goChatBot = GoChatBot()
 
 # Nome de pessoas para adicionar
@@ -26,7 +28,7 @@ goChatBot = GoChatBot()
 
 def start():
     logar("eoy03770@oalsp.com", "gotransa123")
-    chamarPessoa('Moises Mendon')
+    chamarPessoa('Rodriguinho Santos')
 
 def logar(usuario, senha):
     txtEmail = browser.find_element_by_id('email')
@@ -41,80 +43,51 @@ def logar(usuario, senha):
 def chamarPessoa(nome):
     delay = 3 # seconds
 
-    time.sleep(delay)
+    time.sleep(8)
     pessoa = browser.find_elements_by_class_name('_58al')
     
     # Preenche o nome da pessoa
-    pessoa[1].send_keys(nome)
+    pessoa[0].send_keys(nome)
     time.sleep(delay)
-    pessoa[1].send_keys(Keys.ENTER)
+    pessoa[0].send_keys(Keys.ENTER)
     time.sleep(delay)
 
-def sendMessage(resp, decode):
-    delay = 3
-    msgs = browser.find_elements_by_class_name('_4tdt')
-    finalMsg = msgs[len(msgs) - 1]
-        
-    if(resp == None or finalMsg.text != resp.text):
-                        
-        resp = goChatBot.GetAnswer(finalMsg.text)
-        print(resp)
-        
-        actions = ActionChains(browser)
-        actions.send_keys(resp.text.decode(decode))
-        time.sleep(delay)
-        actions.send_keys(Keys.ENTER)
+start()
 
-        actions.perform()
-        actions.reset_actions()
+# Conversando com as pessoas
+while(True):
+    try:
+        delay = 3
+        msgs = browser.find_elements_by_class_name('_4tdt')
+        if len(msgs) == 0:
+            resp = 'ois.!'
+            
+            actions = ActionChains(browser)
+            actions.send_keys(resp.decode('utf-8'))
+            time.sleep(delay)
+            actions.send_keys(Keys.ENTER)
 
-
-    # Primeira Vez
-    # txtChat = browser.find_elements_by_class_name('_1mf')
-    # time.sleep(delay)
-
-    # txtChat[0].send_keys('Oi')
-    # time.sleep(delay)
-    # txtChat[0].send_keys(Keys.ENTER)
-    # time.sleep(delay)
-
-    #actions = ActionChains(browser)
-
-    # Conversando com as pessoas
-    while(True):
-        try:
-            sendMessage(resp, 'utf-8')
-        except Exception as e:
-            print(e)
-        try:
-            sendMessage(resp, 'utf-8-sig')
-        except Exception as e:
-            print(e)
-        try:
-            sendMessage(resp, 'Latin-1')
-        except Exception as e:
-            print(e)
-        try:
-            delay = 3
-            msgs = browser.find_elements_by_class_name('_4tdt')
+            actions.perform()
+            actions.reset_actions()
+        else:
             finalMsg = msgs[len(msgs) - 1]
                 
-            if(resp == None or finalMsg.text != resp.text):
+            if(resp == '' or finalMsg.text != resp or resp in finalMsg.text  and finalMsg.text != ''):
                                 
-                resp = goChatBot.GetAnswer(finalMsg.text)
-                print(resp)
+                response_bot = goChatBot.GetAnswer(finalMsg.text)
+                resp = response_bot.text
                 
                 actions = ActionChains(browser)
-                actions.send_keys("Não é isso...")
+                actions.send_keys(resp.decode('utf-8'))
                 time.sleep(delay)
                 actions.send_keys(Keys.ENTER)
 
                 actions.perform()
                 actions.reset_actions()
-        except Exception as e:
-            print(e)
+        #time.sleep(30)
+    except Exception as e:
+        print(e)
 
-    browser.close()
+browser.close()
 
-start()
 
